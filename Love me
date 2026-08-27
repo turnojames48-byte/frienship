@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Do you love me?</title>
+<style>
+  body {
+    background: #fff0f5;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding-top: 50px;
+  }
+  #cat {
+    width: 120px;
+    margin-bottom: 20px;
+  }
+  h2 {
+    color: #e91e63;
+  }
+ .btn {
+    padding: 15px 40px;
+    font-size: 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin: 20px;
+    transition: 0.3s;
+    position: absolute;
+  }
+  #yes {
+    background: #4CAF50;
+    color: white;
+    left: 35%;
+  }
+  #no {
+    background: #f44336;
+    color: white;
+    left: 55%;
+  }
+  #giftScreen {
+    display: none;
+  }
+ .gift {
+    display: inline-block;
+    background: #ffc0cb;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 15px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div id="mainScreen">
+  <img id="cat" src="https://i.imgur.com/8KmNp3D.png" alt="sad cat">
+  <h2 id="question">Do you love me? ❤️</h2>
+  
+  <button id="yes" class="btn" onclick="sayYes()">YES</button>
+  <button id="no" class="btn" onmouseover="runAway()">NO</button>
+</div>
+
+<div id="giftScreen">
+  <img id="cat" src="https://i.imgur.com/JqIE0bM.png" alt="happy cat">
+  <h2>I knew you'd say yes ❤️</h2>
+  <div class="gift" onclick="alert('Gift 1: Photos of us')">GIFT 1</div>
+  <div class="gift" onclick="alert('Gift 2: Our Song')">GIFT 2</div>
+  <div class="gift" onclick="alert('Gift 3: Love Letter')">GIFT 3</div>
+</div>
+
+<script>
+  let noCount = 0;
+  const questions = [
+    "Do you love me? ❤️",
+    "Wait... are you sure? 🥺",
+    "nah that's not right...",
+    "try again 😭",
+    "be serious...",
+    "okay now you're just playing...",
+    "okay last chance..."
+  ];
+  const catImages = [
+    "https://i.imgur.com/8KmNp3D.png",
+    "https://i.imgur.com/VQm5KkO.png",
+    "https://i.imgur.com/8KmNp3D.png",
+    "https://i.imgur.com/JqIE0bM.png"
+  ];
+
+  function runAway() {
+    const noBtn = document.getElementById('no');
+    const x = Math.random() * (window.innerWidth - 150);
+    const y = Math.random() * (window.innerHeight - 100);
+    noBtn.style.left = x + 'px';
+    noBtn.style.top = y + 100 + 'px';
+
+    noCount++;
+    document.getElementById('question').innerText = questions[noCount] || "okay last chance...";
+    document.getElementById('cat').src = catImages[noCount % catImages.length];
+    
+    // Make YES button bigger
+    const yesBtn = document.getElementById('yes');
+    yesBtn.style.padding = (15 + noCount * 5) + 'px ' + (40 + noCount * 10) + 'px';
+    yesBtn.style.fontSize = (20 + noCount * 2) + 'px';
+  }
+
+  function sayYes() {
+    document.getElementById('mainScreen').style.display = 'none';
+    document.getElementById('giftScreen').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
