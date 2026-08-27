@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Letter For You 💌</title>
+
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffd6e7, #e8d9ff);
+}
+
+.card {
+  width: 85%;
+  max-width: 360px;
+  padding: 35px 25px;
+  text-align: center;
+  background: rgba(255,255,255,0.9);
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.lock {
+  font-size: 55px;
+}
+
+h1 {
+  color: #d85b91;
+}
+
+p {
+  color: #777;
+}
+
+input {
+  width: 80%;
+  padding: 14px;
+  border: 2px solid #f0a7c5;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 20px;
+  letter-spacing: 8px;
+  outline: none;
+}
+
+button {
+  margin-top: 18px;
+  padding: 13px 30px;
+  border: none;
+  border-radius: 20px;
+  background: #e979a8;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#error {
+  color: #d95379;
+  margin-top: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <div class="lock">🔐</div>
+
+  <h1>A Letter For You 💌</h1>
+
+  <p>Enter the secret PIN to open your surprise.</p>
+
+  <input id="pin" type="password" maxlength="4" inputmode="numeric">
+
+  <br>
+
+  <button onclick="unlock()">UNLOCK 💗</button>
+
+  <p id="error"></p>
+</div>
+
+<script>
+function unlock() {
+  const pin = document.getElementById("pin").value;
+
+  if (pin === "1815") {
+    window.location.href =
+      "https://friendshipletter.my.canva.site/dear-friend";
+  } else {
+    document.getElementById("error").textContent =
+      "Wrong PIN 💔 Try again!";
+  }
+}
+</script>
+
+</body>
+</html>
